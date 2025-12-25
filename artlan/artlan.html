@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Feliz Natal 🎄</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+  <style>
+    .font-natal { font-family: 'Playfair Display', serif; }
+    .font-festiva { font-family: 'Mountains of Christmas', cursive; }
+
+    .snowflake {
+      position: fixed;
+      top: -10%;
+      color: white;
+      user-select: none;
+      z-index: 1;
+      pointer-events: none;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      to { transform: translateY(110vh); }
+    }
+
+    .floating {
+      animation: floating 4s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .light-dot {
+      filter: blur(1px);
+      box-shadow: 0 0 8px currentColor;
+    }
+
+    /* Ajuste da imagem de fundo do botão */
+    .btn-bg-image {
+      background-image: url('../assets/WhatsApp\ Image\ 2025-12-24\ at\ 21.34.39.jpeg');
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen bg-gradient-to-b from-[#060b1a] to-[#1e3a8a] text-white overflow-x-hidden font-sans">
+
+  <div id="snow-container"></div>
+
+  <div class="fixed top-0 w-full flex justify-around p-2 z-50 pointer-events-none">
+      <div class="light-dot h-3 w-3 bg-red-500 rounded-full animate-pulse"></div>
+      <div class="light-dot h-3 w-3 bg-yellow-400 rounded-full animate-pulse delay-75"></div>
+      <div class="light-dot h-3 w-3 bg-green-500 rounded-full animate-pulse delay-150"></div>
+      <div class="light-dot h-3 w-3 bg-blue-400 rounded-full animate-pulse delay-300"></div>
+      <div class="light-dot h-3 w-3 bg-red-500 rounded-full animate-pulse"></div>
+  </div>
+
+  <main class="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 py-12 text-center">
+    
+    <div class="relative mb-8 mt-4">
+      <div class="absolute inset-0 bg-yellow-400/20 blur-3xl rounded-full scale-110"></div>
+      
+      <img
+        src="../assets/pngwing.com.png"
+        alt="Árvore de Natal"
+        class="w-56 sm:w-72 md:w-80 lg:w-96 drop-shadow-[0_10px_30px_rgba(255,255,255,0.2)] floating relative z-10"
+      />
+    </div>
+
+    <div class="max-w-md w-full">
+      <h1 class="font-festiva text-6xl sm:text-7xl md:text-8xl leading-none tracking-tight">
+        <span class="block text-red-500 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">Feliz</span>
+        <span class="text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">Natal</span>
+      </h1>
+
+      <div class="h-1 w-16 bg-yellow-400 mx-auto my-6 rounded-full shadow-lg"></div>
+
+      <p class="font-natal text-lg sm:text-xl text-blue-100 italic leading-relaxed px-4">
+        "Que a magia deste Natal ilumine seu caminho e traga paz ao seu coração."
+      </p>
+
+      <div class="mt-10 flex flex-col items-center gap-3 w-full">
+        <button 
+          onclick="mostrarMensagem()" 
+          class="btn-bg-image w-24 h-24 sm:w-28 sm:h-28 rounded-2xl transition-all active:scale-90 hover:scale-105 shadow-xl border-2 border-white/20 bg-black flex items-center justify-center"
+          aria-label="Abrir Presente">
+          </button>
+        <span class="text-yellow-300 text-yellow-300 animate-bounce font-bold text-2xl select-none">
+           ↑
+        </span>
+          <span class="font-natal text-sm w-fit sm:text-base text-yellow-300 font-bold uppercase tracking-widest ">
+          Clique para ganhar um presente 🎁
+        </span>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    const container = document.getElementById('snow-container');
+    const isMobile = window.innerWidth < 768;
+    const count = isMobile ? 30 : 60;
+
+    for (let i = 0; i < count; i++) {
+      const flake = document.createElement('div');
+      flake.className = 'snowflake';
+      flake.innerHTML = '❄';
+      flake.style.left = Math.random() * 100 + 'vw';
+      flake.style.animationDuration = (Math.random() * 3 + 4) + 's';
+      flake.style.opacity = Math.random() * 0.7;
+      flake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+      container.appendChild(flake);
+    }
+
+   function mostrarMensagem() {
+  const mensagens = [
+   "🎄 Ho Ho Ho! Você ganhou um abraço apertado 🤗 (tente novamente)",
+      "🎅 Parabéns! Você ganhou um sorriso natalino 😄 (tente novamente)",
+      "✨ Natal é isso: alegria, risadas e comida boa 🍗 (tente novamente)",
+      "🎁 Presente não veio, mas o carinho tá garantido ❤️ (tente novamente)",
+      "⭐ Você acaba de ganhar um vale-paz para todo o ano de 2026! 🕊️ (tente novamente)",
+      "🥧 Ops! Você ganhou apenas uma fatia virtual de bolo 🥖 (tente novamente)",
+      "🔔 Ding-dong! Você ganhou um sino da felicidade para tocar hoje! 🔔 (tente novamente)",
+      "🕯️ Sua luz brilha mais que os pisca-piscas da árvore! ✨ (tente novamente)",
+      "🍪 Hummm... você ganhou um biscoito de gengibre imaginário! 🍪 (tente novamente)",
+      "🦌 Rodolfo avisou que sua sorte vai brilhar este ano! 🦌 (tente novamente)",
+      "🌈 Você ganhou um estoque infinito de boas energias! ⚡ (tente novamente)"
+  ];
+
+ 
+    const sorteada = mensagens[Math.floor(Math.random() * mensagens.length)];
+    alert(sorteada);
+  
+}
+
+  </script>
+</body>
+</html>
